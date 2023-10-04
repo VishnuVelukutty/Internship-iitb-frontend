@@ -1,22 +1,25 @@
-let ViewCourse = () =>{
-    return(
-        <>
+import React from "react";
+
+const ViewCourse = () => {
+    return (
+        <div className="container mt-4 text-center">
+            <button className="btn btn-primary mb-3">List Courses</button>
             <div>
-                <table class="table table-striped-columns">
+                <table className="table table-striped-columns">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Course Title</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {/* Your table body content goes here */}
                     </tbody>
                 </table>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default ViewCourse;

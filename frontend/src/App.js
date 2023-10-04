@@ -7,38 +7,35 @@ import ViewCourse from "./Pages/ViewCourse";
 import ViewInstance from "./Pages/ViewInstance";
 import AddInstance from "./Pages/AddInstance";
 import AddCourse from "./Pages/AddCourse";
-import MainPage from './Pages/MainPage';
-
-
+import MainPage from './Pages/Mainpage';
 
 function App() {
     return (
         <>
             <Router>
-
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/coursesView">View Courses</Link>
-                            </li>
-
-                            <li>
-                                <Link to="/coursesAdd">Course Add</Link>
-                            </li>
-
-                            <li>
-                                <Link to="/instancesAdd">Instance Add</Link>
-                            </li>
-
-                            <li>
-                                <Link to="/instancesView">Instance View</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-
+                <nav className="navbar navbar-expand-lg bg-light">
+                    <div className="container-fluid">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                        <div className="collapse navbar-collapse" id="navbarNav">
+                            <ul className="navbar-nav">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/coursesView">View Courses</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/coursesAdd">Add Course</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/instancesAdd">Add Instance</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/instancesView">View Instance</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
                 <Routes>
 
 
