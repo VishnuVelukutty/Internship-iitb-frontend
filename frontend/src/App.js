@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
@@ -20,6 +19,9 @@ function App() {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
+                            <li className="nav-item">
+                                    <Link className="nav-link" to="/">Home</Link>
+                                </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/coursesView">View Courses</Link>
                                 </li>

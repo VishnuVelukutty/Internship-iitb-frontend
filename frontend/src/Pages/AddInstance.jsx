@@ -9,6 +9,19 @@ export default function AddInstance() {
             year: document.getElementById("Year").value,
             semester: document.getElementById("Semester").value,
         };
+
+        fetch("/instances",{
+            method : "POST",
+            body : JSON.stringify(addInstanceData),
+            headers : {
+                "Content-type": "application/json",
+            }
+        })
+        .then(res=>{console.log("response from backend",res)})
+        .catch(err=>{console.log("Error occured",err)})
+
+
+
         setInstance([...instanceData, addInstanceData]);
     };
 

@@ -5,11 +5,25 @@ export default function AddCourse() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        
         let addCourseData = {
             CourseTitle: document.getElementById("CourseTitle").value,
             CourseCode: document.getElementById("CourseCode").value,
             CourseDesc: document.getElementById("CourseDesc").value,
         };
+
+        fetch("/courses",{
+            method : "POST",
+            body: JSON.stringify(addCourseData),
+            headers:{
+                "Content-type": "application/json",  
+            }
+        })
+        .then(res=>{console.log(res)})
+        .catch(err=>console.log("Error occured",err))
+
+
 
         setCourse([...courseData, addCourseData]);
     };

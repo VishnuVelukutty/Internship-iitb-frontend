@@ -3,8 +3,14 @@ import React from "react";
 const ViewInstance = () => {
     return (
         <div className="container mt-4">
-            <div className="mb-3 d-flex justify-content-center align-items-center">
-                <input type="email" className="form-control me-2" id="exampleInputEmail1" placeholder="Enter email" aria-describedby="emailHelp" />
+           <div className="mb-3 d-flex justify-content-center align-items-center">
+                <input
+                    type="text"
+                    className="form-control me-2 small-textbox"
+                    id="exampleInputEmail1"
+                    placeholder="Enter email"
+                    aria-describedby="emailHelp"
+                />
                 <button className="btn btn-secondary dropdown-toggle me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown button
                 </button>
