@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function AddInstance() {
     let [instanceData, setInstance] = useState([]);
+    let [courseData, setCourse] = useState([]);
 
     let handleSubmit = (event) => {
         event.preventDefault();
@@ -9,6 +10,14 @@ export default function AddInstance() {
             year: document.getElementById("Year").value,
             semester: document.getElementById("Semester").value,
         };
+
+
+        fetch("/courses",{
+            method : "GET",
+            headers:{
+                "Content-type": "application/json"
+            }
+        })
 
         fetch("/instances",{
             method : "POST",
