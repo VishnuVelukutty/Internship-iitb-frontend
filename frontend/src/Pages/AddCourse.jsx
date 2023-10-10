@@ -33,7 +33,7 @@ export default function AddCourse() {
         <div className="container-fluid text-center">
             <div className="row justify-content-center">
                 <form>
-                    <div className="mb-3">
+                    <div className="mt-3 mb-3 col-6 mx-auto">
                         <input
                             type="text"
                             className="form-control"
@@ -42,7 +42,7 @@ export default function AddCourse() {
                             placeholder="Course Title"
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3 col-6 mx-auto">
                         <input
                             type="text"
                             className="form-control"
@@ -51,7 +51,7 @@ export default function AddCourse() {
                             placeholder="Course Code"
                         />
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-3 col-6 mx-auto">
                         <input
                             type="text"
                             className="form-control"
