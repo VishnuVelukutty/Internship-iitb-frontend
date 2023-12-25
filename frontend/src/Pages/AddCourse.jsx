@@ -1,11 +1,11 @@
 import { useState } from "react";
+import APP_API_URL from "../config.js";
 
 export default function AddCourse() {
     let [courseData, setCourse] = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         
         let addCourseData = {
             CourseTitle: document.getElementById("CourseTitle").value,
@@ -13,7 +13,7 @@ export default function AddCourse() {
             CourseDesc: document.getElementById("CourseDesc").value,
         };
 
-        fetch("/courses",{
+        fetch(`${APP_API_URL}/courses`,{
             method : "POST",
             body: JSON.stringify(addCourseData),
             headers:{

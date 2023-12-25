@@ -1,4 +1,5 @@
 import { useState} from "react";
+import APP_API_URL from "../config.js";
 
 export default function AddInstance() {
     let [instanceData, setInstance] = useState([]);
@@ -7,7 +8,7 @@ export default function AddInstance() {
 
     let handleDrop = (event) => {
         event.preventDefault();
-        fetch("/courses", {
+        fetch(`${APP_API_URL}/courses`, {
             method: "GET",
             headers: {
                 "Content-type": "application/json"
@@ -35,7 +36,7 @@ export default function AddInstance() {
             sem: document.getElementById("Semester").value,
             courseId: selectValue
         };
-        fetch("/instances", {
+        fetch(`${APP_API_URL}/instances`, {
             method: "POST",
             body: JSON.stringify(addInstanceData),
             headers: {
