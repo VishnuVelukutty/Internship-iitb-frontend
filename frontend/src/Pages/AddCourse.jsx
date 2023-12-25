@@ -6,7 +6,6 @@ export default function AddCourse() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         
         let addCourseData = {
             CourseTitle: document.getElementById("CourseTitle").value,
