@@ -1,33 +1,31 @@
-    import './App.css';
-    import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-    import { useState } from 'react';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState } from 'react';
 
-    import ViewCourse from "./Pages/ViewCourse";
-    import ViewInstance from "./Pages/ViewInstance";
-    import AddInstance from "./Pages/AddInstance";
-    import AddCourse from "./Pages/AddCourse";
-    import MainPage from "./Pages/Mainpage";
-    import LoginPage from "./Pages/LoginPage";
+import ViewCourse from "./Pages/ViewCourse";
+import ViewInstance from "./Pages/ViewInstance";
+import AddInstance from "./Pages/AddInstance";
+import AddCourse from "./Pages/AddCourse";
+import MainPage from "./Pages/Mainpage";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from './Pages/RegisterPage';
 
-    function App() {
+function App() {
 
-        const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-            // Function to simulate login (you should implement your actual login logic here)
-            const handleLogin = () => {
-                // For demonstration purposes, set isLoggedIn to true
-                setIsLoggedIn(true);
-            };
-        
-            // Function to simulate logout (you should implement your actual logout logic here)
-            const handleLogout = () => {
-                // For demonstration purposes, set isLoggedIn to false
-                setIsLoggedIn(false);
-            };
-        
+    const handleLogin = () => {
+        setIsLoggedIn(true);
+    };
 
-        return (
-            <>
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+    };
+
+
+    return (
+        <>
+            {isLoggedIn ? (
                 <Router>
                     <nav className="navbar navbar-expand-lg bg-light">
                         <div className="container-fluid">
@@ -36,7 +34,7 @@
                             </button>
                             <div className="collapse navbar-collapse" id="navbarNav">
                                 <ul className="navbar-nav">
-                                <li className="nav-item">
+                                    <li className="nav-item">
                                         <Link className="nav-link" to="/">Home</Link>
                                     </li>
                                     <li className="nav-item">
@@ -51,6 +49,9 @@
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/instancesView">View Instance</Link>
                                     </li>
+                                    <li>
+                                        <Link className="nav-link" to="/register">Register</Link>
+                                    </li>
                                 </ul>
 
                                 <button type="submit" className="btn btn-primary" onClick={handleLogout}>Logout</button>
@@ -58,20 +59,19 @@
                         </div>
                     </nav>
                     <Routes>
-                        {/* Display LoginPage if user is not logged in */}
-                        {!isLoggedIn && <Route path="/" element={<LoginPage onLogin={handleLogin} />} />}
-                        
-                        {/* Protect other routes by checking isLoggedIn */}
-                        {isLoggedIn && <Route path="/" element={<MainPage />} />}
-                        {isLoggedIn && <Route path="/coursesView" element={<ViewCourse />} />}
-                        {isLoggedIn && <Route path="/coursesAdd" element={<AddCourse />} />}
-                        {isLoggedIn && <Route path="/instancesAdd" element={<AddInstance />} />}
-                        {isLoggedIn && <Route path="/instancesView" element={<ViewInstance />} />}
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="/coursesView" element={<ViewCourse />} />
+                        <Route path="/coursesAdd" element={<AddCourse />} />
+                        <Route path="/instancesAdd" element={<AddInstance />} />
+                        <Route path="/instancesView" element={<ViewInstance />} />
+                        <Route path="/register" element={<RegisterPage />} />
                     </Routes>
-
                 </Router>
-            </>
-        );
-    }
+            ) : (
+                <LoginPage onLogin={handleLogin} />
+            )}
+        </>
+    );
+}
 
-    export default App;
+export default App;
