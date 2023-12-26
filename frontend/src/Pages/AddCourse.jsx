@@ -20,7 +20,12 @@ export default function AddCourse() {
                 "Content-type": "application/json",  
             }
         })
-        .then(res=>{console.log(res)})
+        .then(res=>{console.log(res)
+        document.getElementById("CourseTitle").value = "";
+        document.getElementById("CourseCode").value = "";
+        document.getElementById("CourseDesc").value = "";
+    }
+        )
         .catch(err=>console.log("Error occured",err))
 
 

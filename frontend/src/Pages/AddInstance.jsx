@@ -43,7 +43,12 @@ export default function AddInstance() {
                 "Content-type": "application/json",
             }
         })
-            .then(res => { console.log("response from backend", res) })
+            .then(res => { console.log("response from backend", res) 
+        
+        
+            document.getElementById("Year").value = "";
+            document.getElementById("Semester").value = "";        
+        })
             .catch(err => { console.log("Error occured", err) })
         setInstance([...instanceData, addInstanceData]);
     };

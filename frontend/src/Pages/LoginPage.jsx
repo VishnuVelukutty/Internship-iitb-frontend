@@ -21,6 +21,11 @@ export default function LoginPage({onLogin}){
             })
             .then(res =>{console.log(res.json())
                 onLogin();
+
+                document.getElementById("userName").value = "";
+                document.getElementById("userPass").value = "";    
+
+
             })
             .catch(err => console.log("Error occurred", err));
         
