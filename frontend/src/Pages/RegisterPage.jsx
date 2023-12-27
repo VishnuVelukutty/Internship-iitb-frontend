@@ -1,4 +1,9 @@
 export default function RegisterPage(){
+
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log("Button Clicked");
+    }
     
     const option = {
         "Admin" : "A",
@@ -14,11 +19,16 @@ export default function RegisterPage(){
                 <div><input placeholder="Username"></input></div>
                 <div><input palceholder="Password"></input></div>
                 <div><input palceholder="Re-Password"></input></div>
-                <div><select defaultValue={"SELECT TYPE"}>
-      for(let x in option){
-       <option key={option.key} value={option.value}>{option.key}</option>     
-    }
+                <div><select>
+                <option value="" defaultValue>Select Semester</option>
+                {Object.entries(option).map(([key, value]) => (
+                <option key={value} value={value}>
+                  {key}
+                </option>
+              ))}
                     </select></div>
+
+                    <button type="Submit" onClick={handleSubmit}>Submit</button>
 
             </form>
         </div>

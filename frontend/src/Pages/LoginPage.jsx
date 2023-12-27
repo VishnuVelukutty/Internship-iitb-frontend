@@ -19,20 +19,20 @@ export default function LoginPage({ onLogin }) {
                 "Content-type": "application/json",
             }
         })
-        .then(res => res.json())
+        .then(res => res.json() )
         .then(data => {
             // Access keys and values from the JSON data
             for (let key in data) {
                 console.log("Key:", key, "Value:", data[key]);
             }
 
-            // Check if the login was successful based on the response
-            if (data.success) {
-                onLogin(); // Call onLogin only if login is successful
-                // You may want to redirect the user or perform other actions here
+            // Success is the key that is being sent from BE
+            if (data.Success) {
+                onLogin();
             } else {
                 // Handle unsuccessful login (show an error message, etc.)
-                console.log("Login failed:", data.message);
+                // TO DO => Show on the Screen 
+                console.log("Login failed:", data.Info);
             }
 
             // Clear input fields
@@ -49,7 +49,7 @@ export default function LoginPage({ onLogin }) {
                     <div className="mt-3 mb-3 col-6 mx-auto">
                         <input type="text" placeholder="Username" id="userName" /></div>
                     <div className="mb-3 col-6 mx-auto">
-                        <input type="text" placeholder="Password" id="userPass" /></div>
+                        <input type="password" placeholder="Password" id="userPass" /></div>
                     <button type="submit" className="btn btn-primary" onClick={loginFunction}>Submit</button>
                 </form>
             </div>

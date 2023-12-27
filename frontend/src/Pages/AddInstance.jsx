@@ -20,7 +20,6 @@ export default function AddInstance() {
                 if (data && data.Data) {
                     setCourses(data.Data);
                     console.log(data)
-
                 } else {
                     console.error("Invalid data format received from the backend");
                 }
@@ -47,7 +46,9 @@ export default function AddInstance() {
         
         
             document.getElementById("Year").value = "";
-            document.getElementById("Semester").value = "";        
+            document.getElementById("Semester").value = "";
+
+  
         })
             .catch(err => { console.log("Error occured", err) })
         setInstance([...instanceData, addInstanceData]);
