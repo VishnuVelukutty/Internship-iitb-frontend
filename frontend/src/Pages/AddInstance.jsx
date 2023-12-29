@@ -47,6 +47,7 @@ export default function AddInstance() {
         
             document.getElementById("Year").value = "";
             document.getElementById("Semester").value = "";
+            document.getElementById("courseName").value = "";
 
   
         })
@@ -57,7 +58,7 @@ export default function AddInstance() {
         <div className="container mt-4">
             <form className="row g-3 justify-content-center">
                 <div className="col-6 text-center">
-                    <select className="form-select" aria-label="Default select example" onClick={handleDrop}>
+                    <select id="courseName" className="form-select" aria-label="Default select example" onClick={handleDrop}>
                         <option value="" defaultValue>Select course</option>
                         {courses.map((course, index) => (
                             <option key={index} value={course.courseId}>{course.courseTitle}</option>
