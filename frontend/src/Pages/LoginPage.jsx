@@ -1,9 +1,9 @@
 import { useState } from "react";
 import APP_API_URL from "../config"
 
-export default function LoginPage({ onLogin }) {
+export default function LoginPage({ onLogin,sendType}) {
+    
     let [loginData, setLoginData] = useState([]);
-
     let loginFunction = (event) => {
         event.preventDefault();
 
@@ -15,6 +15,7 @@ export default function LoginPage({ onLogin }) {
 
         if(loginDetails['userName'] === "Admin" && loginDetails['userPass'] === "Admin"){
             onLogin();
+           sendType("A");
         }
 
         fetch(`${APP_API_URL}/login`, {
@@ -26,14 +27,12 @@ export default function LoginPage({ onLogin }) {
         })
         .then(res => res.json() )
         .then(data => {
-            // Access keys and values from the JSON data
-            for (let key in data) {
-                console.log("Key:", key, "Value:", data[key]);
-            }
-
-            // Success is the key that is being sent from BE
+              // Success is the key that is being sent from BE
             if (data.Success) {
                 onLogin();
+                let userType = data.Success;
+                sendType(userType);
+                console.log(userType)
             } else {
                 // Handle unsuccessful login (show an error message, etc.)
                 // TO DO => Show on the Screen 

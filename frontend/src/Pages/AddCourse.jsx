@@ -5,7 +5,7 @@ export default function AddCourse() {
     let [courseData, setCourse] = useState([]);
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+/*  */        event.preventDefault();
         
         let addCourseData = {
             CourseTitle: document.getElementById("CourseTitle").value,

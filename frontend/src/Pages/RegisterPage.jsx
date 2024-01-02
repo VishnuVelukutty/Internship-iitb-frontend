@@ -3,9 +3,6 @@ import APP_API_URL from "../config";
 
 export default function RegisterPage() {
 
-    let [registerData, setRegisterData] = useState([]);
-
-
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -14,7 +11,7 @@ export default function RegisterPage() {
             userName: document.getElementById("userName").value,
             userPass: document.getElementById("userPass").value,
             userRePass: document.getElementById("userRePass").value,
-            userType: event.target.value
+            userType: document.getElementById("userType").value
         }
 
         fetch(`${APP_API_URL}/register`, {
@@ -32,9 +29,15 @@ export default function RegisterPage() {
                     console.log("Missmatch");
                     document.getElementById("userPass").value = "";
                     document.getElementById("userRePass").value = "";
-                } else {
-                    console.log("Some error")
+                } else if (data.Failed) 
+                {
+                    console.log("Already Exists");
+                    document.getElementById("userName").value = "";
+
                 }
+                 else {
+                    console.log("Some error")
+                } 
             })
             .catch(err => { console.log("Error occured", err) });
 
@@ -53,12 +56,12 @@ export default function RegisterPage() {
     return (
         <>
 
-            <div>
+            <div className="container-fluid text-center">
                 <form>
-                    <div><input id="userName" placeholder="Username"></input></div>
-                    <div><input id="userPass" palceholder="Password"></input></div>
-                    <div><input id="userRePass" palceholder="Re-Type Password"></input></div>
-                    <div><select id="userType">
+                    <div className="mt-3 mb-3 col-6 mx-auto"><input id="userName" placeholder="Username"></input></div>
+                    <div className="mt-3 mb-3 col-6 mx-auto"><input id="userPass" placeholder="Password"></input></div>
+                    <div className="mt-3 mb-3 col-6 mx-auto"><input id="userRePass" placeholder="Re-Type Password"></input></div>
+                    <div className="mt-3 mb-3 col-6 mx-auto dropdown"><select id="userType">
                         <option value="" defaultValue>Select Semester</option>
                         {Object.entries(option).map(([key, value]) => (
                             <option key={value} value={value}>
@@ -67,7 +70,7 @@ export default function RegisterPage() {
                         ))}
                     </select></div>
 
-                    <button type="Submit" onClick={handleSubmit}>Submit</button>
+                    <button type="Submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
 
                 </form>
             </div>

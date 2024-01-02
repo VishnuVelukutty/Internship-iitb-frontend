@@ -13,6 +13,10 @@ import RegisterPage from './Pages/RegisterPage';
 function App() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const recieveType = (data) =>{
+        let userType = data;
+        console.log("Usertype rcvd in app.js >>> "+userType);
+    };
 
     const handleLogin = () => {
         setIsLoggedIn(true);
@@ -75,7 +79,7 @@ function App() {
                     </Routes>
                 </Router>
             ) : (
-                <LoginPage onLogin={handleLogin} />
+                <LoginPage onLogin={handleLogin} sendType={recieveType}/>
             )}
         </>
     );
