@@ -16,6 +16,13 @@ export default function LoginPage({ onLogin,sendType}) {
         if(loginDetails['userName'] === "Admin" && loginDetails['userPass'] === "Admin"){
             onLogin();
            sendType("A");
+        }else if(loginDetails['userName'] === "Teacher" && loginDetails['userPass'] === "Teacher"){
+            onLogin();
+            sendType("T");
+        }else if(loginDetails['userName'] === "Student" && loginDetails['userPass'] === "Student"){
+            onLogin();
+            sendType("S");
+ 
         }
 
         fetch(`${APP_API_URL}/login`, {

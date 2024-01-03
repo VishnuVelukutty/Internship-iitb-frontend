@@ -13,9 +13,11 @@ import RegisterPage from './Pages/RegisterPage';
 function App() {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const recieveType = (data) =>{
-        let userType = data;
-        console.log("Usertype rcvd in app.js >>> "+userType);
+    const [userType, setUserType] = useState("");
+
+    const recieveType = (data) => {
+        setUserType(data);
+        console.log("Usertype rcvd in app.js >>> " + userType);
     };
 
     const handleLogin = () => {
@@ -26,6 +28,31 @@ function App() {
         setIsLoggedIn(false);
     };
 
+
+    /*nav links on the basis of type  */
+
+    const userTypeLinks = {
+        A: [
+            { to: "/coursesView", label: "View Courses" },
+            { to: "/coursesAdd", label: "Add Course" },
+            { to: "/instancesAdd", label: "Add Instance" },
+            { to: "/instancesView", label: "View Instance" },
+            { to: "/register", label: "Register" },
+        ],
+        T: [
+            // Add links for user type T
+            { to: "/coursesView", label: "View Courses" },
+            { to: "/coursesAdd", label: "Add Course" },
+            { to: "/instancesAdd", label: "Add Instance" },
+            { to: "/instancesView", label: "View Instance" },            
+        ],
+        S: [
+            // Add links for user type S
+            { to: "/coursesView", label: "View Courses" },
+            { to: "/instancesView", label: "View Instance" },
+
+        ],
+    };
 
     return (
         <>
@@ -43,27 +70,19 @@ function App() {
                                 aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
+
                             <div className="collapse navbar-collapse" id="navbarNav">
-                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">                                    
-                                <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" to={"/"}>Home</Link>
-                                </li>
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/coursesView"}>View Courses</Link>
+                                        <Link className="nav-link active" aria-current="page" to={"/"}>Home</Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/coursesAdd"}>Add Course</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/instancesAdd"}>Add Instance</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/instancesView"}>View Instance</Link>
-                                    </li>
-                                    <li>
-                                        <Link className="nav-link" to={"/register"}>Register</Link>
-                                    </li>
+                                    {userTypeLinks[userType]?.map((link, index) => (
+                                        <li className="nav-item" key={index}>
+                                            <Link className="nav-link" to={link.to}>{link.label}</Link>
+                                        </li>
+                                    ))}
                                 </ul>
+                            
 
                                 <button type="submit" className="btn btn-primary" onClick={handleLogout}>Logout</button>
                             </div>
@@ -71,6 +90,32 @@ function App() {
                     </nav>
                     <Routes>
                         <Route path="/" element={<MainPage />} />
+
+                        {/* {userType === "A" && (
+                            <> 
+                                <Route path="/coursesView" element={<ViewCourse />} />
+                                <Route path="/coursesAdd" element={<AddCourse />} />
+                                <Route path="/instancesAdd" element={<AddInstance />} />
+                                <Route path="/instancesView" element={<ViewInstance />} />
+                                <Route path="/register" element={<RegisterPage />} />
+                            </>
+                        )}
+                        {userType === "T" && (
+                            <>
+                                <Route path="/coursesView" element={<ViewCourse />} />
+                                <Route path="/coursesAdd" element={<AddCourse />} />
+                                <Route path="/instancesAdd" element={<AddInstance />} />
+                                <Route path="/instancesView" element={<ViewInstance />} />
+                            </>
+                        )}
+                        {userType === "S" && (
+                            <>
+                                <Route path="/coursesView" element={<ViewCourse />} />
+                                <Route path="/instancesView" element={<ViewInstance />} />
+                            </>
+                        )
+                        } */}
+
                         <Route path="/coursesView" element={<ViewCourse />} />
                         <Route path="/coursesAdd" element={<AddCourse />} />
                         <Route path="/instancesAdd" element={<AddInstance />} />
@@ -79,7 +124,7 @@ function App() {
                     </Routes>
                 </Router>
             ) : (
-                <LoginPage onLogin={handleLogin} sendType={recieveType}/>
+                <LoginPage onLogin={handleLogin} sendType={recieveType} />
             )}
         </>
     );
