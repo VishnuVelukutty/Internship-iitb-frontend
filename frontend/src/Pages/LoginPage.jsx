@@ -23,7 +23,7 @@ export default function LoginPage({ onLogin,sendType}) {
             onLogin();
             sendType("S");
  
-        }
+        } else {
 
         fetch(`${APP_API_URL}/login`, {
             method: "POST",
@@ -39,10 +39,11 @@ export default function LoginPage({ onLogin,sendType}) {
                 onLogin();
                 let userType = data.Success;
                 sendType(userType);
-                console.log(userType)
+                console.log("Login page data >>> "+userType)
             } else {
                 // Handle unsuccessful login (show an error message, etc.)
-                // TO DO => Show on the Screen 
+                // TO DO => Show on the Screen
+                document.getElementById("warn").innerHTML = data.Info; 
                 console.log("Login failed:", data.Info);
             }
 
@@ -52,6 +53,9 @@ export default function LoginPage({ onLogin,sendType}) {
         })
         .catch(err => console.log("Error occurred", err));
   }
+
+        }
+
 
     return (
         <>
@@ -63,6 +67,7 @@ export default function LoginPage({ onLogin,sendType}) {
                         <input type="password" placeholder="Password" id="userPass" /></div>
                     <button type="submit" className="btn btn-primary" onClick={loginFunction}>Submit</button>
                 </form>
+                <span id="warn"></span>
             </div>
         </>
     )

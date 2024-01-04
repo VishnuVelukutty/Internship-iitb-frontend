@@ -40,14 +40,12 @@ function App() {
             { to: "/register", label: "Register" },
         ],
         T: [
-            // Add links for user type T
             { to: "/coursesView", label: "View Courses" },
             { to: "/coursesAdd", label: "Add Course" },
             { to: "/instancesAdd", label: "Add Instance" },
             { to: "/instancesView", label: "View Instance" },            
         ],
         S: [
-            // Add links for user type S
             { to: "/coursesView", label: "View Courses" },
             { to: "/instancesView", label: "View Instance" },
 
@@ -90,32 +88,6 @@ function App() {
                     </nav>
                     <Routes>
                         <Route path="/" element={<MainPage />} />
-
-                        {/* {userType === "A" && (
-                            <> 
-                                <Route path="/coursesView" element={<ViewCourse />} />
-                                <Route path="/coursesAdd" element={<AddCourse />} />
-                                <Route path="/instancesAdd" element={<AddInstance />} />
-                                <Route path="/instancesView" element={<ViewInstance />} />
-                                <Route path="/register" element={<RegisterPage />} />
-                            </>
-                        )}
-                        {userType === "T" && (
-                            <>
-                                <Route path="/coursesView" element={<ViewCourse />} />
-                                <Route path="/coursesAdd" element={<AddCourse />} />
-                                <Route path="/instancesAdd" element={<AddInstance />} />
-                                <Route path="/instancesView" element={<ViewInstance />} />
-                            </>
-                        )}
-                        {userType === "S" && (
-                            <>
-                                <Route path="/coursesView" element={<ViewCourse />} />
-                                <Route path="/instancesView" element={<ViewInstance />} />
-                            </>
-                        )
-                        } */}
-
                         <Route path="/coursesView" element={<ViewCourse />} />
                         <Route path="/coursesAdd" element={<AddCourse />} />
                         <Route path="/instancesAdd" element={<AddInstance />} />
