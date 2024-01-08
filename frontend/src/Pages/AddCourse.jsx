@@ -5,7 +5,7 @@ export default function AddCourse() {
     let [courseData, setCourse] = useState([]);
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+/*  */        event.preventDefault();
         
         let addCourseData = {
             CourseTitle: document.getElementById("CourseTitle").value,
@@ -20,7 +20,12 @@ export default function AddCourse() {
                 "Content-type": "application/json",  
             }
         })
-        .then(res=>{console.log(res)})
+        .then(res=>{console.log(res)
+        document.getElementById("CourseTitle").value = "";
+        document.getElementById("CourseCode").value = "";
+        document.getElementById("CourseDesc").value = "";
+    }
+        )
         .catch(err=>console.log("Error occured",err))
 
 
@@ -33,6 +38,17 @@ export default function AddCourse() {
         <div className="container-fluid text-center">
             <div className="row justify-content-center">
                 <form>
+
+                <div className="mb-3 col-6 mx-auto">
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="CourseCode"
+                            aria-describedby="CourseCode"
+                            placeholder="Course Code"
+                        />
+                    </div>
+                    
                     <div className="mt-3 mb-3 col-6 mx-auto">
                         <input
                             type="text"
@@ -40,15 +56,6 @@ export default function AddCourse() {
                             id="CourseTitle"
                             aria-describedby="CourseTitle"
                             placeholder="Course Title"
-                        />
-                    </div>
-                    <div className="mb-3 col-6 mx-auto">
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="CourseCode"
-                            aria-describedby="CourseCode"
-                            placeholder="Course Code"
                         />
                     </div>
                     <div className="mb-3 col-6 mx-auto">

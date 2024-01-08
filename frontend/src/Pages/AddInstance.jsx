@@ -20,7 +20,6 @@ export default function AddInstance() {
                 if (data && data.Data) {
                     setCourses(data.Data);
                     console.log(data)
-
                 } else {
                     console.error("Invalid data format received from the backend");
                 }
@@ -43,7 +42,15 @@ export default function AddInstance() {
                 "Content-type": "application/json",
             }
         })
-            .then(res => { console.log("response from backend", res) })
+            .then(res => { console.log("response from backend", res) 
+        
+        
+            document.getElementById("Year").value = "";
+            document.getElementById("Semester").value = "";
+            document.getElementById("courseName").value = "";
+
+  
+        })
             .catch(err => { console.log("Error occured", err) })
         setInstance([...instanceData, addInstanceData]);
     };
@@ -51,7 +58,7 @@ export default function AddInstance() {
         <div className="container mt-4">
             <form className="row g-3 justify-content-center">
                 <div className="col-6 text-center">
-                    <select className="form-select" aria-label="Default select example" onClick={handleDrop}>
+                    <select id="courseName" className="form-select" aria-label="Default select example" onClick={handleDrop}>
                         <option value="" defaultValue>Select course</option>
                         {courses.map((course, index) => (
                             <option key={index} value={course.courseId}>{course.courseTitle}</option>

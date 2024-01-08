@@ -59,8 +59,12 @@ const ViewInstance = () => {
                 }
             })
             .catch((err) => console.log("Error occurred", err));
-    };
+            
+            document.getElementById("year").value = "";
+            document.getElementById("selectSem").value = "";
 
+            
+        };
 
     let handleDelete = (inst) => {
         // /instances/{year}/{sem}/{id}
@@ -93,7 +97,7 @@ const ViewInstance = () => {
                 />
 
                 <div className="col-6 text-center">
-                    <select className="form-select" aria-label="Default select example" onClick={handleDrop}>
+                    <select id="selectSem" className="form-select" aria-label="Default select example" onClick={handleDrop}>
                         <option value="" defaultValue>Select Semester</option>
                         {sem.map((course, index) => (
                             <option key={index} value={course.sem}>{course.sem}</option>
